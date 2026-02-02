@@ -12,6 +12,7 @@
             --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
             --accent: #5e8c61;
             --info-bg: #ffffff;
+            --waze: #33ccff;
         }
 
         html {
@@ -259,25 +260,46 @@
             font-size: 1.1rem;
         }
 
-        .btn-info {
+        .btn-container {
             margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-info, .btn-waze {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 14px;
-            background: #f1f3f1;
-            color: var(--primary);
+            padding: 12px;
             border-radius: 12px;
             font-weight: 700;
             transition: all 0.2s;
             cursor: pointer;
             border: none;
             width: 100%;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-info {
+            background: #f1f3f1;
+            color: var(--primary);
         }
 
         .btn-info:hover {
             background: var(--secondary);
+            color: white;
+        }
+
+        .btn-waze {
+            background: #e1f5fe;
+            color: #0288d1;
+        }
+
+        .btn-waze:hover {
+            background: var(--waze);
             color: white;
         }
 
@@ -378,7 +400,7 @@
                 </div>
             </div>
             <div class="update-action">
-                <a href="https://ims.gov.il/he" target="_blank" class="btn-info btn-weather" style="margin:0; white-space: nowrap;">למזג אוויר מלא</a>
+                <a href="https://ims.gov.il/he" target="_blank" class="btn-info" style="margin:0; white-space: nowrap; width: auto; padding: 12px 25px;">למזג אוויר מלא</a>
             </div>
         </div>
 
@@ -389,18 +411,23 @@
                 <div class="card-img" style="background-image: url('https://www.tiuli.com/image/f16b1528825b61b4a809eb0699e531ea.jpeg?&width=1080&height=0')"></div>
                 <div class="card-content">
                     <span class="card-time">בוקר | 09:00</span>
-                    <h3 class="card-title">יער שחריה</h3>
-                    <p class="card-desc">עצירת בוקר ביער המלאכים. קפה, מאפים, אוויר צלול ופתיחה חגיגית לטיול הגיבוש.</p>
-                    <button class="btn-info" onclick="showInfo('יער שחריה', 'יער המלאכים (שחריה) משתרע על פני 7,000 דונם. המקום מציע חניוני פיקניק, מסלולי הליכה ונוף פסטורלי מושלם להתחלת הבוקר.')">📖 פרטים על המקום</button>
+                    <h3 class="card-title">יער המלאכים - שחריה</h3>
+                    <p class="card-desc">עצירת בוקר פסטורלית. קפה, מאפים, אוויר צלול ופתיחה חגיגית לטיול הגיבוש שלנו.</p>
+                    <div class="btn-container">
+                        <a href="https://www.waze.com/ul?ll=31.59986877,34.83304214&navigate=yes" target="_blank" class="btn-waze">🚗 ניווט ב-Waze</a>
+                        <button class="btn-info" onclick="showInfo('יער המלאכים - שחריה', 'יער המלאכים (שחריה) משתרע על פני 7,000 דונם. המקום מציע חניוני פיקניק, מסלולי הליכה ונוף פסטורלי מושלם להתחלת הבוקר.')">📖 פרטים על המקום</button>
+                    </div>
                 </div>
             </div>
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="card-img" style="background-image: url('https://www.levtours.co.il/wp-content/uploads/lev-home-01.jpg')"></div>
                 <div class="card-content">
                     <span class="card-time">צהריים | 12:30</span>
                     <h3 class="card-title">מחנה יהודה ונחלאות</h3>
                     <p class="card-desc">סיור טעימות קולינרי בשוק המפורסם ושיטוט בין החצרות ההיסטוריות של נחלאות.</p>
-                    <button class="btn-info" onclick="showInfo('מחנה יהודה ונחלאות', 'שוק מחנה יהודה הוא לב הפעימה של ירושלים. שכונת נחלאות הסמוכה ידועה בסמטאותיה הצרות ובבתי הכנסת העתיקים שלה.')">📖 פרטים על המקום</button>
+                    <div class="btn-container">
+                        <button class="btn-info" onclick="showInfo('מחנה יהודה ונחלאות', 'שוק מחנה יהודה הוא לב הפעימה של ירושלים. שכונת נחלאות הסמוכה ידועה בסמטאותיה הצרות ובבתי הכנסת העתיקים שלה.')">📖 פרטים על המקום</button>
+                    </div>
                 </div>
             </div>
             <div class="card">
@@ -409,16 +436,20 @@
                     <span class="card-time">אחה&quot;צ | 16:00</span>
                     <h3 class="card-title">מלון רמת רחל</h3>
                     <p class="card-desc">צ'ק-אין למלון, זמן חופשי למנוחה וליהנות מהנוף המרהיב ומהאווירה הירושלמית.</p>
-                    <button class="btn-info" onclick="showInfo('מלון רמת רחל', 'מלון קיבוצי הממוקם בנקודה הגבוהה ביותר בירושלים. הוא מציע נוף פנורמי מרהיב ואווירה כפרית בלב העיר.')">📖 פרטים על המקום</button>
+                    <div class="btn-container">
+                        <button class="btn-info" onclick="showInfo('מלון רמת רחל', 'מלון קיבוצי הממוקם בנקודה הגבוהה ביותר בירושלים. הוא מציע נוף פנורמי מרהיב ואווירה כפרית בלב העיר.')">📖 פרטים על המקום</button>
+                    </div>
                 </div>
             </div>
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="card-img" style="background-image: url('https://static.wixstatic.com/media/ac0b37_fa18ee810dde4b12b3a089ba2083fdf6~mv2.jpg/v1/fill/w_640,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ac0b37_fa18ee810dde4b12b3a089ba2083fdf6~mv2.jpg')"></div>
                 <div class="card-content">
                     <span class="card-time">ערב | 19:30</span>
                     <h3 class="card-title">סלון יווני</h3>
                     <p class="card-desc">ארוחת ערב חגיגית עם טעמים יווניים אותנטיים, מוזיקה ואווירת גיבוש מנצחת.</p>
-                    <button class="btn-info" onclick="showInfo('סלון יווני', 'חוויה קולינרית ים-תיכונית המשלבת דגים טריים, מזטים מסורתיים ואווירת טברנה שמחה ומגבשת.')">📖 פרטים על המקום</button>
+                    <div class="btn-container">
+                        <button class="btn-info" onclick="showInfo('סלון יווני', 'חוויה קולינרית ים-תיכונית המשלבת דגים טריים, מזטים מסורתיים ואווירת טברנה שמחה ומגבשת.')">📖 פרטים על המקום</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -440,7 +471,9 @@
                     <span class="card-time">לפני הצהריים | 10:30</span>
                     <h3 class="card-title">מנהרות הכותל</h3>
                     <p class="card-desc">סיור &quot;הגשר הגדול&quot; - מסע מרתק אל מעמקי ההיסטוריה והמנהרות המרתקות.</p>
-                    <button class="btn-info" onclick="showInfo('מנהרות הכותל', 'סיור המנהרות חושף נדבכים עתיקים, כולל קשתות אבן עצומות ומבנים מימי בית שני שנותרו חבויים אלפי שנים.')">📖 פרטים על המקום</button>
+                    <div class="btn-container">
+                        <button class="btn-info" onclick="showInfo('מנהרות הכותל', 'סיור המנהרות חושף נדבכים עתיקים, כולל קשתות אבן עצומות ומבנים מימי בית שני שנותרו חבויים אלפי שנים.')">📖 פרטים על המקום</button>
+                    </div>
                 </div>
             </div>
             <div class="card">
@@ -449,7 +482,9 @@
                     <span class="card-time">צהריים | 13:00</span>
                     <h3 class="card-title">זמן חופשי בכותל</h3>
                     <p class="card-desc">זמן אישי למחשבה, תפילה וביקור חופשי ברחבת הכותל המערבי.</p>
-                    <button class="btn-info" onclick="showInfo('הכותל המערבי', 'הכותל המערבי הוא שריד מחומת התמך של הר הבית והאתר המקודש ביותר לעם היהודי. זמן להתחבר לשורשים.')">📖 פרטים על המקום</button>
+                    <div class="btn-container">
+                        <button class="btn-info" onclick="showInfo('הכותל המערבי', 'הכותל המערבי הוא שריד מחומת התמך של הר הבית והאתר המקודש ביותר לעם היהודי. זמן להתחבר לשורשים.')">📖 פרטים על המקום</button>
+                    </div>
                 </div>
             </div>
             <div class="card">
@@ -458,17 +493,20 @@
                     <span class="card-time">צהריים | 15:00</span>
                     <h3 class="card-title">מסעדת צידקיהו</h3>
                     <p class="card-desc">סיום הטיול בארוחת צהריים בשרית ירושלמית קלאסית ומשביעה.</p>
-                    <button class="btn-info" onclick="showInfo('מסעדת צידקיהו', 'מוסד ירושלמי ותיק הידוע בבשרים על האש ובשפע סלטים טריים – הסיום המושלם לטיול.')">📖 פרטים על המקום</button>
+                    <div class="btn-container">
+                        <button class="btn-info" onclick="showInfo('מסעדת צידקיהו', 'מוסד ירושלמי ותיק הידוע בבשרים על האש ובשפע סלטים טריים – הסיום המושלם לטיול.')">📖 פרטים על המקום</button>
+                    </div>
                 </div>
             </div>
-            <!-- שעת חזרה מעוצבת עם תמונה מעודכנת -->
             <div class="card" style="border: 2px solid var(--secondary);">
                 <div class="card-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/PerformingArtsCenterBeershebaDec142022.jpg/1280px-PerformingArtsCenterBeershebaDec142022.jpg')"></div>
                 <div class="card-content">
                     <span class="card-time">סיום הטיול | 16:00</span>
                     <h3 class="card-title">יציאה חזרה הביתה</h3>
                     <p class="card-desc">שעת יציאה משוערת חזרה לבאר שבע (חניון המשכן)</p>
-                    <button class="btn-info" onclick="showInfo('פרטי החזרה', 'האוטובוסים ימתינו בנקודת המפגש בשעה 16:00 בדיוק. זמן הגעה משוער לבאר שבע: 17:30-18:00 (תלוי בעומסי התנועה).')">📍 פרטי הגעה</button>
+                    <div class="btn-container">
+                        <button class="btn-info" onclick="showInfo('פרטי החזרה', 'האוטובוסים ימתינו בנקודת המפגש בשעה 16:00 בדיוק. זמן הגעה משוער לבאר שבע: 17:30-18:00 (תלוי בעומסי התנועה).')">📍 פרטי הגעה</button>
+                    </div>
                 </div>
             </div>
         </div>
