@@ -16,7 +16,6 @@
         body {
             font-family: 'Assistant', 'Segoe UI', system-ui, sans-serif;
             background-color: var(--bg);
-            /* הוספת רקע סימני דרך */
             background-image: radial-gradient(circle at 2px 2px, rgba(94, 140, 97, 0.1) 1px, transparent 0);
             background-size: 40px 40px;
             color: #222;
@@ -25,7 +24,6 @@
             position: relative;
         }
 
-        /* אלמנט דקורטיבי של מסלול ניווט ברקע */
         body::before {
             content: "";
             position: absolute;
@@ -46,7 +44,7 @@
 
         header {
             background: linear-gradient(rgba(45, 64, 48, 0.6), rgba(45, 64, 48, 0.7)), 
-                        url('https://images.unsplash.com/photo-1542662565-7e4b66bae529?auto=format&fit=crop&w=1500&q=80'); /* תמונת הרי ירושלים */
+                        url('https://images.unsplash.com/photo-1542662565-7e4b66bae529?auto=format&fit=crop&w=1500&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -78,6 +76,19 @@
 
         h1 { margin: 0; font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
         .subtitle { font-size: 1.3rem; opacity: 0.9; margin-top: 8px; font-weight: 300; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+        
+        .welcome-text {
+            max-width: 700px;
+            margin-top: 20px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.4;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            border-right: 4px solid var(--secondary);
+        }
 
         .container {
             max-width: 1100px;
@@ -87,25 +98,12 @@
             z-index: 10;
         }
 
-        /* סימני דרך דקורטיביים בין כרטיסים */
         .events-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 40px;
             margin-bottom: 70px;
             position: relative;
-        }
-
-        /* קו מקווקו המחבר בין אלמנטים */
-        .card::after {
-            content: "➤";
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%) rotate(90deg);
-            color: var(--secondary);
-            font-size: 20px;
-            opacity: 0.5; /* 50% שקיפות */
         }
 
         .card {
@@ -245,6 +243,7 @@
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             .events-grid { grid-template-columns: 1fr; }
+            .welcome-text { font-size: 1.1rem; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700;800&display=swap" rel="stylesheet">
@@ -257,6 +256,11 @@
         </div>
         <h1>עולים לירושלים</h1>
         <p class="subtitle">טיול גיבוש עובדי התיאטרון | 12-13.04</p>
+        
+        <div class="welcome-text">
+            מחכים לכם ליום גיבוש של צוות תיאטרון באר שבע –<br>
+            יום של יחד, אוויר, אוכל טוב ויציאה מהשגרה.
+        </div>
     </header>
 
     <div class="container">
@@ -264,7 +268,7 @@
         <span class="day-label">יום ראשון - 12/04</span>
         <div class="events-grid">
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="card-img" style="background-image: url('https://www.tiuli.com/image/f16b1528825b61b4a809eb0699e531ea.jpeg?&width=1080&height=0')"></div>
                 <div class="card-content">
                     <span class="card-time">בוקר | 09:00</span>
                     <h3 class="card-title">יער שחריה</h3>
@@ -282,7 +286,8 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-img" style="background-image: url('https://ramatrachel.co.il/media/1377/%D7%97%D7%93%D7%A8_%D7%A1%D7%98%D7%A0%D7%93%D7%A8%D7%98.jpg')"></div>
+                <!-- תמונה מעודכנת עבור מלון רמת רחל לפי הלינק האחרון -->
+                <div class="card-img" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/736228962.jpg?k=26dbc1f73f1800c11d3b4821cb257a1113d92043b6ca25dbbe9c4079c1a6ab92&o=')"></div>
                 <div class="card-content">
                     <span class="card-time">אחה&quot;צ | 16:00</span>
                     <h3 class="card-title">מלון רמת רחל</h3>
