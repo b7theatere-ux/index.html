@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>טיול גיבוש - תיאטרון</title>
+    <title>טיול גיבוש - תיאטרון באר שבע</title>
     <style>
         :root {
             --primary: #2d4030; /* ירוק עמוק מודרני */
@@ -22,42 +22,65 @@
         }
 
         header {
-            background: linear-gradient(rgba(45, 64, 48, 0.85), rgba(45, 64, 48, 0.95)), 
+            background: linear-gradient(rgba(45, 64, 48, 0.9), rgba(45, 64, 48, 0.95)), 
                         url('https://images.unsplash.com/photo-1548686304-89d201905845?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
-            padding: 100px 20px;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            padding: 40px 20px 120px;
+            clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        h1 { margin: 0; font-size: 3rem; font-weight: 800; }
-        .subtitle { font-size: 1.4rem; opacity: 0.9; margin-top: 10px; font-weight: 300; }
+        .logo-container {
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 200px;
+        }
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h1 { margin: 0; font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; }
+        .subtitle { font-size: 1.3rem; opacity: 0.9; margin-top: 8px; font-weight: 300; }
 
         .container {
             max-width: 1100px;
-            margin: -50px auto 60px;
-            padding: 0 20px;
+            margin: 0 auto 60px;
+            padding: 30px 20px 0;
+            position: relative;
+            z-index: 10;
         }
 
         .day-label {
             display: inline-block;
             background: var(--secondary);
             color: white;
-            padding: 8px 25px;
+            padding: 10px 30px;
             border-radius: 50px;
             font-weight: 700;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 10px rgba(197, 163, 93, 0.3);
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(197, 163, 93, 0.4);
+            font-size: 1.1rem;
         }
 
-        /* הגדרות הרשת (Grid) */
         .events-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
+            gap: 30px;
+            margin-bottom: 70px;
         }
 
         .card {
@@ -65,21 +88,24 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             border: 1px solid rgba(0,0,0,0.03);
         }
 
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
 
         .card-img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             background-size: cover;
             background-position: center;
+            background-color: #eee;
+            background-repeat: no-repeat;
         }
 
         .card-content {
@@ -93,22 +119,21 @@
             color: var(--accent);
             font-weight: 700;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .card-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            margin: 0 0 10px 0;
+            margin: 0 0 12px 0;
             color: var(--primary);
         }
 
         .card-desc {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.6;
         }
 
         .btn-nav {
@@ -117,7 +142,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px;
+            padding: 14px;
             background: #f1f3f1;
             color: var(--primary);
             text-decoration: none;
@@ -131,39 +156,44 @@
             color: white;
         }
 
-        /* אזור רישום מודרני */
         .reg-section {
             background: white;
             border-radius: 30px;
-            padding: 50px 30px;
+            padding: 60px 30px;
             text-align: center;
             box-shadow: var(--card-shadow);
+            margin-top: 40px;
         }
 
         .reg-section h2 {
             font-size: 2.2rem;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .iframe-wrapper {
-            margin-top: 30px;
+            margin-top: 40px;
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid #eee;
+            background: #fafafa;
         }
 
         footer {
             text-align: center;
             padding: 60px 20px;
             color: #888;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            background: #f1f1f1;
+            margin-top: 80px;
         }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
-            header { padding: 60px 20px; }
+            header { padding: 40px 20px 100px; }
+            .container { padding-top: 20px; }
             .events-grid { grid-template-columns: 1fr; }
+            .logo-container { max-width: 150px; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700;800&display=swap" rel="stylesheet">
@@ -171,12 +201,18 @@
 <body>
 
     <header>
-        <h1>יוצאים לירושלים 🎭</h1>
-        <p class="subtitle">טיול גיבוש צוות התיאטרון | 12-13.04</p>
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/he/thumb/f/f6/%D7%9C%D7%95%D7%92%D7%95_%D7%AA%D7%99%D7%90%D7%98%D7%A8%D7%95%D7%9F_%D7%91%D7%90%D7%A8-%D7%A9%D7%91%D7%A2.png/800px-%D7%9C%D7%95%D7%92%D7%95_%D7%AA%D7%99%D7%90%D7%98%D7%A8%D7%95%D7%9F_%D7%91%D7%90%D7%A8-%D7%A9%D7%91%D7%A2.png" 
+                 alt="תיאטרון באר שבע" 
+                 class="logo"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<strong style=color:black>תיאטרון באר שבע</strong>'">
+        </div>
+        <h1>עולים לירושלים</h1>
+        <p class="subtitle">טיול גיבוש עובדי התיאטרון | 12-13.04</p>
     </header>
 
     <div class="container">
-        
+
         <!-- DAY 1 -->
         <span class="day-label">יום ראשון - 12/04</span>
         <div class="events-grid">
@@ -184,9 +220,9 @@
             <div class="card">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80')"></div>
                 <div class="card-content">
-                    <span class="card-time">בוקר</span>
+                    <span class="card-time">בוקר | 09:00</span>
                     <h3 class="card-title">יער שחריה</h3>
-                    <p class="card-desc">עצירת בוקר ביער המלאכים. קפה, אוויר צלול ופתיחה חגיגית לטיול.</p>
+                    <p class="card-desc">עצירת בוקר ביער המלאכים. קפה, מאפים, אוויר צלול ופתיחה חגיגית לטיול הגיבוש.</p>
                     <a href="https://waze.com/ul/hc216m5d0b" class="btn-nav" target="_blank">📍 ניווט ליעד</a>
                 </div>
             </div>
@@ -194,19 +230,19 @@
             <div class="card">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80')"></div>
                 <div class="card-content">
-                    <span class="card-time">צהריים</span>
+                    <span class="card-time">צהריים | 12:30</span>
                     <h3 class="card-title">מחנה יהודה ונחלאות</h3>
-                    <p class="card-desc">סיור טעימות קולינרי בשוק ושיטוט בין החצרות המסתוריות של נחלאות.</p>
+                    <p class="card-desc">סיור טעימות קולינרי בשוק המפורסם ושיטוט בין החצרות ההיסטוריות של נחלאות.</p>
                     <a href="https://waze.com/ul/hc221rephz" class="btn-nav" target="_blank">📍 ניווט ליעד</a>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="card-img" style="background-image: url('https://ramatrachel.co.il/media/1377/%D7%97%D7%93%D7%A8_%D7%A1%D7%98%D7%A0%D7%93%D7%A8%D7%98.jpg')"></div>
                 <div class="card-content">
-                    <span class="card-time">אחה"צ</span>
+                    <span class="card-time">אחה"צ | 16:00</span>
                     <h3 class="card-title">מלון רמת רחל</h3>
-                    <p class="card-desc">צ'ק-אין למלון, זמן חופשי למנוחה וליהנות מהנוף המרהיב של דרום העיר.</p>
+                    <p class="card-desc">צ'ק-אין למלון, זמן חופשי למנוחה וליהנות מהנוף המרהיב ומהאווירה הירושלמית.</p>
                     <a href="https://waze.com/ul/hc221q0m1u" class="btn-nav" target="_blank">📍 ניווט ליעד</a>
                 </div>
             </div>
@@ -214,9 +250,9 @@
             <div class="card">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80')"></div>
                 <div class="card-content">
-                    <span class="card-time">ערב</span>
+                    <span class="card-time">ערב | 19:30</span>
                     <h3 class="card-title">סלון יווני</h3>
-                    <p class="card-desc">ארוחת ערב חגיגית עם טעמים מהים התיכון ואווירה משמחת.</p>
+                    <p class="card-desc">ארוחת ערב חגיגית עם טעמים יווניים אותנטיים, מוזיקה ואווירת גיבוש מנצחת.</p>
                 </div>
             </div>
 
@@ -229,37 +265,37 @@
             <div class="card">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80')"></div>
                 <div class="card-content">
-                    <span class="card-time">בוקר</span>
+                    <span class="card-time">בוקר | 08:30</span>
                     <h3 class="card-title">ארוחת בוקר</h3>
-                    <p class="card-desc">פתיחת היום בבופה העשיר של המלון.</p>
+                    <p class="card-desc">ארוחת בוקר עשירה במלון לפני שיוצאים ליום גדוש בחוויות.</p>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1548686304-89d201905845?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="card-img" style="background-image: url('https://thekotel.org/wp-content/uploads/2020/01/min310.jpg')"></div>
                 <div class="card-content">
-                    <span class="card-time">לפני הצהריים</span>
+                    <span class="card-time">לפני הצהריים | 10:30</span>
                     <h3 class="card-title">מנהרות הכותל</h3>
-                    <p class="card-desc">סיור ב"גשר הגדול" - חשיפת מעמקי ההיסטוריה מתחת לעיר העתיקה.</p>
+                    <p class="card-desc">סיור "הגשר הגדול" - מסע מרתק אל מעמקי ההיסטוריה והמנהרות המרתקות.</p>
                     <a href="https://waze.com/ul/hc221rtsm0" class="btn-nav" target="_blank">📍 ניווט ליעד</a>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1574013446051-70f2be22086e?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="card-img" style="background-image: url('https://assets.itraveljerusalem.com/westernwall_credit_Vander_Wolf_Images_Dreamstime_3f73755490.jpg')"></div>
                 <div class="card-content">
-                    <span class="card-time">צהריים</span>
+                    <span class="card-time">צהריים | 13:00</span>
                     <h3 class="card-title">זמן חופשי בכותל</h3>
-                    <p class="card-desc">הפסקה למחשבה, תפילה וביקור חופשי ברחבת הכותל.</p>
+                    <p class="card-desc">זמן אישי למחשבה, תפילה וביקור חופשי ברחבת הכותל המערבי.</p>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="card-img" style="background-image: url('https://images.rest.co.il/Customers/38104210/3f752e2787c54703b59f772754e25464.jpg')"></div>
                 <div class="card-content">
-                    <span class="card-time">סיום הטיול</span>
+                    <span class="card-time">סיום | 15:00</span>
                     <h3 class="card-title">מסעדת צידקיהו</h3>
-                    <p class="card-desc">ארוחת צהריים בשרית ירושלמית קלאסית לסיכום החוויה.</p>
+                    <p class="card-desc">סיום הטיול בארוחת צהריים בשרית ירושלמית קלאסית ומשביעה.</p>
                 </div>
             </div>
 
@@ -268,7 +304,7 @@
         <!-- REGISTRATION SECTION -->
         <div class="reg-section">
             <h2>נרשמים לטיול ✨</h2>
-            <p>נא למלא את כל הפרטים בטופס למטה כדי שנוכל להיערך.</p>
+            <p>נא למלא את כל הפרטים בטופס למטה כדי שנוכל להיערך בהתאם.</p>
             <div class="iframe-wrapper">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScf-U4Ap2d7tR-8wVzdf8pfBua3nA-Vz4z2rA0nTTVJOqqXaw/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">בטעינה…</iframe>
             </div>
@@ -277,7 +313,7 @@
     </div>
 
     <footer>
-        © תיאטרון | מחלקת משאבי אנוש 2024
+        © תיאטרון באר שבע | מחלקת משאבי אנוש 2026
     </footer>
 
 </body>
