@@ -1,0 +1,468 @@
+
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>טיול גיבוש - תיאטרון באר שבע</title>
+    <style>
+        :root {
+            --primary: #2d4030;
+            --secondary: #f3ca2f;
+            --bg: #f8f9fa;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --accent: #5e8c61;
+            --info-bg: #ffffff;
+            --waze: #33ccff;
+            --waze-dark: #2ab5e4;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Assistant', 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 2px 2px, rgba(94, 140, 97, 0.1) 1px, transparent 0);
+            background-size: 40px 40px;
+            color: #222;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        header {
+            background: linear-gradient(rgba(45, 64, 48, 0.6), rgba(45, 64, 48, 0.7)), 
+                        url('https://images.unsplash.com/photo-1542662565-7e4b66bae529?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 40px 20px 140px;
+            clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 220px;
+        }
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h1 { margin: 0; font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .subtitle { font-size: 1.3rem; opacity: 0.9; margin-top: 8px; font-weight: 300; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+        
+        .welcome-text {
+            max-width: 700px;
+            margin-top: 20px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.4;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            border-right: 4px solid var(--secondary);
+            margin-bottom: 25px;
+        }
+
+        .btn-register-top {
+            background-color: var(--secondary);
+            color: var(--primary); 
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-weight: 900;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: 2px solid rgba(255,255,255,0.3);
+            text-transform: uppercase;
+        }
+
+        .btn-register-top:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            background-color: #ffda45;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            padding: 30px 20px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .updates-card {
+            background: var(--info-bg);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .updates-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--secondary);
+        }
+
+        .update-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .update-icon {
+            font-size: 1.5rem;
+            background: #f8f9fa;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            flex-shrink: 0;
+        }
+
+        .update-content strong {
+            display: block;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .weather-info {
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .card:hover { transform: translateY(-8px); }
+
+        .card-img {
+            width: 100%;
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            background-color: #eee;
+        }
+
+        .card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-time { color: var(--accent); font-weight: 800; font-size: 1.15rem; margin-bottom: 10px; }
+        .card-title { font-size: 1.5rem; font-weight: 800; margin: 0 0 12px 0; color: var(--primary); }
+        .card-desc { font-size: 1.05rem; color: #555; margin-bottom: 25px; line-height: 1.6; }
+
+        .day-label {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(243, 202, 47, 0.4);
+            font-size: 1.1rem;
+        }
+
+        .btn-container { margin-top: auto; display: flex; flex-direction: column; gap: 12px; }
+
+        .btn-info, .btn-waze {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 800;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .btn-info { background: #f1f3f1; color: var(--primary); }
+        .btn-waze { background: var(--waze); color: white; box-shadow: 0 4px 12px rgba(51, 204, 255, 0.3); }
+
+        /* עיצוב עבור הטופס החיצוני */
+        .reg-section {
+            background: white;
+            border-radius: 30px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            border-top: 8px solid var(--secondary);
+            overflow: hidden;
+        }
+
+        .form-wrapper {
+            position: relative;
+            height: 600px; /* גובה מקוצר כדי שהמסך לא יהיה ארוך מדי */
+            width: 100%;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .form-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background-color: white; padding: 30px; border-radius: 20px;
+            max-width: 500px; width: 90%; position: relative; text-align: right;
+        }
+        .close { position: absolute; top: 15px; left: 15px; font-size: 24px; cursor: pointer; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .events-grid { grid-template-columns: 1fr; }
+            .updates-card { grid-template-columns: 1fr; }
+            .btn-register-top { font-size: 1.2rem; padding: 15px 30px; }
+            .form-wrapper { height: 500px; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://b7t.co.il/wp-content/uploads/2021/11/logoooo.png" alt="תיאטרון באר שבע" class="logo">
+        </div>
+        <h1>עולים לירושלים</h1>
+        <p class="subtitle">טיול גיבוש עובדי התיאטרון | 12-13.04</p>
+        <div class="welcome-text">מחכים לכם ליומיים של יחד, נופים, אוכל טוב ויציאה מהשגרה.</div>
+        <a href="#registration" class="btn-register-top"><span>לחץ/י לאישור הגעה ורישום</span> ✨</a>
+    </header>
+
+    <div class="container">
+        <!-- Updates Section -->
+        <div class="updates-card">
+            <div class="update-item">
+                <div class="update-icon">🚌</div>
+                <div class="update-content">
+                    <strong>יציאה מהמשכן</strong>
+                    <span>12.04.2026 בשעה 08:00 (חניית המשכן)</span>
+                </div>
+            </div>
+            <div class="update-item">
+                <div class="update-icon">🌤️</div>
+                <div class="update-content">
+                    <strong>תחזית לירושלים</strong>
+                    <div id="weather-display" class="weather-info">טוען תחזית...</div>
+                </div>
+            </div>
+            <div class="update-action">
+                <a href="https://ims.gov.il/he" target="_blank" class="btn-info" style="width: auto;">למזג אוויר מלא</a>
+            </div>
+        </div>
+
+        <!-- יום ראשון -->
+        <span class="day-label">יום ראשון - 12/04</span>
+        <div class="events-grid">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://www.tiuli.com/image/f16b1528825b61b4a809eb0699e531ea.jpeg?&width=1080&height=0')"></div>
+                <div class="card-content">
+                    <span class="card-time">בוקר | 09:00</span>
+                    <h3 class="card-title">יער המלאכים - שחריה</h3>
+                    <p class="card-desc">עצירת בוקר פסטורלית בלב היער. נתחיל את היום עם קפה איכותי, מאפים חמים, אוויר צלול וזמן גיבוש רגוע בטבע.</p>
+                    <div class="btn-container">
+                        <a href="https://www.waze.com/ul?ll=31.5998688,34.8330421&navigate=yes" target="_blank" class="btn-waze">🚗 Waze ליער המלאכים</a>
+                        <button class="btn-info" onclick="showInfo('יער המלאכים', 'יער המלאכים-שחריה ממוקם כ-4 קילומטרים ממזרח לקריית גת. זהו יער נטוע של קק״ל המציע חניוני פיקניק מוסדרים.')">פרטים נוספים</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://www.levtours.co.il/wp-content/uploads/lev-home-01.jpg')"></div>
+                <div class="card-content">
+                    <span class="card-time">צהריים | 12:30</span>
+                    <h3 class="card-title">מחנה יהודה ונחלאות</h3>
+                    <p class="card-desc">סיור טעימות קולינרי חווייתי בשוק המפורסם ושיטוט קסום בין החצרות ההיסטוריות של שכונת נחלאות.</p>
+                    <div class="btn-container">
+                        <button class="btn-info" onclick="showInfo('סיור בשוק ונחלאות', 'הסיור משלב את האנרגיה התוססת של שוק מחנה יהודה עם השקט והסיפורים הנסתרים של נחלאות.')">פרטים נוספים</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/736228962.jpg?k=26dbc1f73f1800c11d3b4821cb257a1113d92043b6ca25dbbe9c4079c1a6ab92&o=')"></div>
+                <div class="card-content">
+                    <span class="card-time">אחה&quot;צ | 16:00</span>
+                    <h3 class="card-title">צ'ק-אין: מלון רמת רחל</h3>
+                    <p class="card-desc">הגעה למלון הפסטורלי, קבלת חדרים וזמן חופשי למנוחה או טיול קצר בשטח הקיבוץ הצופה לנופי הרי יהודה.</p>
+                    <div class="btn-container">
+                        <a href="https://www.waze.com/ul?ll=31.7402,35.2173&navigate=yes" target="_blank" class="btn-waze">🚗 Waze למלון</a>
+                        <button class="btn-info" onclick="showInfo('מלון רמת רחל', 'מלון ומרכז כנסים בקיבוץ רמת רחל. המלון מציע בריכה, ספא, ונקודת תצפית מרהיבה.')">פרטים נוספים</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://static.wixstatic.com/media/ac0b37_fa18ee810dde4b12b3a089ba2083fdf6~mv2.jpg/v1/fill/w_640,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ac0b37_fa18ee810dde4b12b3a089ba2083fdf6~mv2.jpg')"></div>
+                <div class="card-content">
+                    <span class="card-time">ערב | 19:15</span>
+                    <h3 class="card-title">ארוחת ערב: סלון יווני</h3>
+                    <p class="card-desc">חגיגה יוונית בלב ירושלים! נתכנס לארוחת ערב עשירה עם דגים, מזטים משובחים ומוזיקה סוחפת.</p>
+                    <div class="btn-container">
+                        <button class="btn-info" onclick="showInfo('הסלון היווני', 'מסעדת שף המציעה חוויה קולינרית ים-תיכונית אותנטית. חגיגה של טעמים ושמחה.')">פרטים נוספים</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- יום שני -->
+        <span class="day-label">יום שני - 13/04</span>
+        <div class="events-grid">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://thekotel.org/wp-content/uploads/2020/01/min310.jpg')"></div>
+                <div class="card-content">
+                    <span class="card-time">בוקר | 09:35</span>
+                    <h3 class="card-title">מנהרות הכותל - הגשר הגדול</h3>
+                    <p class="card-desc">מסע תת-קרקעי מרתק בעקבות ההיסטוריה. נסייר במסלול "הגשר הגדול" החושף מבנים עתיקים מימי בית שני.</p>
+                    <div class="btn-container">
+                        <button class="btn-info" onclick="showInfo('מנהרות הכותל', 'מסלול הגשר הגדול הוא אחד המסלולים המרשימים במנהרות, הכולל תצוגות טכנולוגיות מתקדמות.')">פרטים נוספים</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.rest.co.il/Customers/38104210/3f752e2787c54703b59f772754e25464.jpg')"></div>
+                <div class="card-content">
+                    <span class="card-time">צהריים | 15:00</span>
+                    <h3 class="card-title">מסעדת צידקיהו</h3>
+                    <p class="card-desc">ארוחת צהריים בשרית ירושלמית קלאסית. שפע סלטים, בשרים על האש ושירות חם לסיום הטיול.</p>
+                    <div class="btn-container">
+                        <button class="btn-info" onclick="showInfo('מסעדת צידקיהו', 'מוסד ירושלמי ותיק הידוע בבשרים על האש. מקום מושלם לסגור את הטיול בבטן מלאה.')">פרטים נוספים</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="card-content">
+                    <span class="card-time">אחר הצהריים | 16:30</span>
+                    <h3 class="card-title">יציאה חזרה לבאר שבע</h3>
+                    <p class="card-desc">נפרדים מירושלים ומתחילים בנסיעה דרומה. זמן למנוחה באוטובוס, סיכומים וחוויות מהיומיים המשותפים שלנו.</p>
+                    <div class="btn-container">
+                        <button class="btn-info" onclick="showInfo('חזרה הביתה', 'שעת הגעה משוערת לבאר שבע: 18:00. הורדה בחניית המשכן לאמנויות הבמה.')">פרטים נוספים</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Form Section - Updated to the new Google Form -->
+        <div id="registration" class="reg-section">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="color: var(--primary); margin-bottom: 10px;">אישור הגעה ורישום ✨</h2>
+                <p>אנא מלאו את הפרטים בטופס למטה</p>
+            </div>
+            
+            <div class="form-wrapper">
+                <!-- Google Form Iframe with the updated URL -->
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScf-U4Ap2d7tR-8wVzdf8pfBua3nA-Vz4z2rA0nTTVJOqqXaw/viewform?embedded=true">טוען...</iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for more info -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" style="color: var(--primary); margin-top: 0;"></h3>
+            <p id="modalBody" style="line-height: 1.6;"></p>
+            <button class="btn-info" onclick="closeModal()" style="margin-top: 15px; width: 100%;">סגור</button>
+        </div>
+    </div>
+
+    <script>
+        function showInfo(title, text) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = text;
+            document.getElementById('infoModal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('infoModal').style.display = 'none'; }
+        
+        window.onclick = function(event) { 
+            if (event.target == document.getElementById('infoModal')) closeModal(); 
+        }
+        
+        window.onload = function() {
+            document.getElementById('weather-display').innerText = "נעים, 17-23°C (מעונן חלקית)";
+        }
+    </script>
+</body>
+</html>
